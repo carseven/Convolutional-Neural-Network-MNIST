@@ -28,7 +28,8 @@ print('')
 
 
 "Representamos graficamente una muestra del Dataset"
-digit = train_images[4]
+digit = train_images[0]
+print(digit)
 plt.imshow(digit, cmap=plt.cm.binary)
 plt.show()
 
