@@ -21,15 +21,14 @@ print('Tipo de dato del 3D tensor de las imagenes:')
 print(train_images.dtype)
 print('1D tensor son las etiquetas:')
 print(train_labels)
-print('Tipo de dato del 1D tensor de las etiquetas')
+print('Tipo de dato del 1D tensor de las etiquetas:')
 print(train_labels.dtype)
 print('/**********************************************/')
 print('')
 
 
-"Representamos graficamente una muestra del Dataset"
-digit = train_images[0]
-print(digit)
+"Representamos graficamente una muestra(28x28) del Dataset"
+digit = train_images[0, 0:27, -27:27]
 plt.imshow(digit, cmap=plt.cm.binary)
 plt.show()
 
