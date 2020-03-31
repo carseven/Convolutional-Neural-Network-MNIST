@@ -6,31 +6,13 @@ print(__version__)
 
 "Cargamos el dataset de MNIST."
 (train_images, train_labels),(test_images, test_labels) = tf.keras.datasets.mnist.load_data()
-print("Cargamos el dataset de MNIST")
-
-
-print('')
-print('/**********************************************/')
-print("		 OBSERVAMOS EL DATASET MNIST")
-print('/**********************************************/')
-print('Shape del tensor:')
-print(train_images.shape)
-print('Numero de imagenes:')
-print(len(train_labels))
-print('Tipo de dato del 3D tensor de las imagenes:')
-print(train_images.dtype)
-print('1D tensor son las etiquetas:')
-print(train_labels)
-print('Tipo de dato del 1D tensor de las etiquetas:')
-print(train_labels.dtype)
-print('/**********************************************/')
-print('')
 
 
 "Representamos graficamente una muestra(28x28) del Dataset"
 digit = train_images[0, 0:27, -27:27]
 plt.imshow(digit, cmap=plt.cm.binary)
 plt.show()
+
 
 "Preparamos las imagenes para introducirlas"
 train_images = train_images.reshape((60000, 28 * 28))
@@ -50,6 +32,8 @@ network = models.Sequential()
 network.add(layers.Dense(512, activation='relu', input_shape=(28 * 28,)))
 network.add(layers.Dense(10, activation='softmax'))
 
+
+"Configuramos la funcion de perdidas y el tipo de optimizacion"
 network.compile(optimizer='rmsprop',
                 loss='categorical_crossentropy',
                 metrics=['accuracy'])

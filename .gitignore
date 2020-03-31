@@ -1,3 +1,10 @@
+*.pyc
+
+# virtual enviorement
 venv/
+
+# developer eviroment
 *.sublime-project
 *.sublime-workspace
+
+
