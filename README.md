@@ -1,4 +1,4 @@
-# mplementación de estructuras de redes neuronales profundas para el reconocimiento de signos alfanuméricos manuscritos.
+# Implementación de estructuras de redes neuronales profundas para el reconocimiento de signos alfanuméricos manuscritos.
 El objetivo del trabajo de final de grado es el de implementar diferentes tipos de redes neuronales para
 el reconocimiento y clasificación de imágenes con signos alfanuméricos (letras y números) manuscritos. Se
 analizará el campo del aprendizaje profundo y, en concreto, las redes neuronales profundas. Una vez obtenidos
