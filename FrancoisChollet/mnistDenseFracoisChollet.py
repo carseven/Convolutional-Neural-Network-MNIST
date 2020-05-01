@@ -1,11 +1,11 @@
-import tensorflow as tf
-from keras import models, layers, Sequential, __version__
+from keras import models, layers, __version__
 from keras.utils import to_categorical
+from keras.datasets import mnist
 import matplotlib.pyplot as plt
 print(__version__)
 
 "Cargamos el dataset de MNIST."
-(train_images, train_labels),(test_images, test_labels) = tf.keras.datasets.mnist.load_data()
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
 
 
 "Representamos graficamente una muestra(28x28) del Dataset"
@@ -16,11 +16,10 @@ plt.show()
 
 "Preparamos las imagenes para introducirlas"
 train_images = train_images.reshape((60000, 28 * 28))
-train_images = train_images.astype('float32') / 255 # Normalizamos
+train_images = train_images.astype('float32') / 255  # Normalizamos
 
 test_images = test_images.reshape((10000, 28 * 28))
-test_images = test_images.astype('float32') / 255 # Normalizamos
-
+test_images = test_images.astype('float32') / 255  # Normalizamos
 
 "Codificamos  categoricamente las etiquetas"
 train_labels = to_categorical(train_labels)
