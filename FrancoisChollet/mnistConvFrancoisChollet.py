@@ -46,7 +46,11 @@ model.summary()
 
 
 "Entrenamos el modelo"
-history = model.fit(train_images, train_labels, epochs=5, batch_size=64, validation_data=(test_images, test_labels))
+history = model.fit(train_images,
+                    train_labels,
+                    epochs=5,
+                    batch_size=64,
+                    validation_data=(test_images, test_labels))
 
 
 "Evaluamos nuestra red entrenada con nuestro imagenes de test"

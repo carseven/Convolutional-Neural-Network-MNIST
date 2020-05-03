@@ -39,9 +39,27 @@ network.compile(optimizer='rmsprop',
 
 
 "Entrenamos el modelo"
-network.fit(train_images, train_labels, epochs=5, batch_size=128)
+history = network.fit(train_images,
+                      train_labels,
+                      epochs=5,
+                      batch_size=64,
+                      validation_data=(test_images, test_labels))
 
 
 "Evaluamos nuestra red entrenada con nuestro imagenes de test"
 test_loss, test_acc = network.evaluate(test_images, test_labels)
 print('Precision del test: ', test_acc)
+
+
+"Dibujamos la función de perdidas de los datos del test y validación"
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(1, len(loss) + 1)
+
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.show()
