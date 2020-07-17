@@ -6,5 +6,5 @@ venv/
 # developer eviroment
 *.sublime-project
 *.sublime-workspace
-
+.vscode/
 
