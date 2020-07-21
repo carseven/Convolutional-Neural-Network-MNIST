@@ -129,7 +129,7 @@ test_labels = to_categorical(test_labels)
 
 #  DATA AUGMENTATION
 
-
+# Normal (Gaussian) distribution
 def ruido(img):
     VARIABILITY = 0.1
     deviation = VARIABILITY * random.random()
@@ -168,18 +168,31 @@ model = models.Sequential()
 #  Block 1 CNN
 model.add(layers.Conv2D(32, (3, 3),
                         activation='relu',
+                        padding='same',
+                        use_bias=True,
                         input_shape=(28, 28, 1)))
+model.add(layers.BatchNormalization())
 model.add(layers.MaxPooling2D((2, 2)))
 model.add(layers.Dropout(0.25))
 
 #  Block 2 CNN
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Conv2D(64, (3, 3),
+                        activation='relu',
+                        padding='same',
+                        use_bias=True))
+model.add(layers.BatchNormalization())
 model.add(layers.MaxPooling2D((2, 2)))
 model.add(layers.Dropout(0.25))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+
+# Block 3 CNN
+model.add(layers.Conv2D(64, (3, 3),
+                        activation='relu',
+                        padding='same',
+                        use_bias=True))
+model.add(layers.BatchNormalization())
 model.add(layers.Dropout(0.25))
 
-#  Block 3 FC
+#  Block 4 FC
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dropout(0.25))
@@ -252,12 +265,9 @@ for i in range(test_images.shape[0]):
         error += 1
 
 
-print("Confusion Matrix: \n\n", confusion_matrix)
 print("\nErrors in validation set: ", error)
 print("\nError Persentage : ", (error * 100) / val_p.shape[0])
 print("\nAccuracy : ", 100 - (error * 100) / val_p.shape[0])
-print("\nValidation set Shape :", val_p.shape[0])
-
 
 #  Plot consufion matrix
 
